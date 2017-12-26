@@ -9,7 +9,6 @@ import com.mysql.jdbc.Connection;
 
 /**
  *  Administrator
- *
  */
 public interface Transaction {
 	Connection  getConnection() throws SQLException;  
