@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.xcc.mybatis.UserMapper">
+
+<!-- 
+	id="save"是唯一的标示符
+	parameterType属性指明插入时使用的参数类型
+	useGeneratedKeys="true"表示使用数据库的自动增长策略
+	 <insert id="save" parameterType="com.xcc.mybatis.User" useGeneratedKeys="true">
+  	INSERT INTO TB_USER(name,sex,age) VALUES(#{name},#{sex},#{age})
+  </insert>
+	
+ -->
+ 
+  
+  <insert id="saveUser" parameterType="user" 
+  useGeneratedKeys="true" keyProperty="id">
+  	INSERT INTO TB_USER(name,sex,age) 
+  	VALUES(#{name},#{sex},#{age})
+  </insert>
+  
+  <select id="selectUser" parameterType="int" resultType="user">
+  	select * from TB_USER where id=#{id}
+  </select>
+  
+  <update id="modifyUser" parameterType="user">
+  	update TB_USER set name=#{name},sex=#{sex},age=#{age} where id=#{id}
+  </update>
+  
+  <delete id="removeUser" parameterType="int">
+      delete from TB_USER where id=#{id}
+  </delete>
+  
+  <select id="selectAllUser" resultType="map">
+      select * from tb_user
+  </select>
+  
+ <resultMap id="userResultMap" type="user">
+      <id property="id" column="user_id"/>
+      <id property="name" column="user_name"/>
+      <id property="sex" column="user_sex"/>
+      <id property="age" column="user_age"/>
+  </resultMap>
+  
+  <select id="selectUser2" resultMap="userResultMap">  
+  		select * from tb_user2;	
+  </select> 
+  
+  <!-- 外键 -->
+  
+  <resultMap id="studentResultMap" type="com.xcc.mybatis.Student">
+  	<id property="id" column="id"/>
+  	<result property="name" column="name"/>
+  	<result property="sex" column="sex"/>
+  	<result property="age" column="age"/>
+  	
+  	<!--关联映射-->
+  	<association property="clazz" column="clazz_id"
+      javaType="com.xcc.mybatis.Clazz"
+      select="selectClazzWidth"/>
+
+  	</resultMap>
+
+	<select id="selectClazzWidth" resultType="com.xcc.mybatis.Clazz">
+    	select * from tb_clazz where id=#{id}
+	</select>  	
+  	<select id="selectStudent" resultMap="studentResultMap">
+  		select * from tb_student
+  	</select>
+  	
+  	<resultMap id="clazzResultMap" type="com.xcc.mybatis.Clazz">
+  	    <id property="id" column="id"/>
+  	    <result property="code" column="code"/>
+  	    <collection property="students" javaType="ArrayList"
+  	        column="id" ofType="com.xcc.mybatis.Student"
+  	        select="selectStudentWithId"/>
+  	</resultMap>
+	<select id="selectStudentWithId" resultType="com.xcc.mybatis.Student">  
+  		select * from tb_student where clazz_id=#{id}
+  	</select>
+  	
+	<select id="selectClazz" resultMap="clazzResultMap">
+	    select * from tb_clazz
+	</select>
+  
+</mapper>

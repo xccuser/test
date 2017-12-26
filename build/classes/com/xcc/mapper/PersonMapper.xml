@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace指用户自定义的命名空间。 -->
+<mapper namespace="com.xcc.mapper.PersonMapper">
+   
+    
+    <select id="selectPersonById" parameterType="int"
+        resultMap="personMapper">
+        select * from tb_person where id=#{id}
+    </select>
+  <!-- 映射Peson对象的resultMap -->
+    <resultMap type="com.xcc.mybatis.Person" id="personMapper">
+    	<id property="id" column="id"/>
+    	<result property="name" column="name"/>
+    	<result property="sex" column="sex"/>
+    	<result property="age" column="age"/>
+    	<association property="crad" column="card_id"
+    	    select="com.xcc.mybatis.CardMapper.selectCardById" 
+    	    javaType="com.xcc.mybatis.Card"/>
+    	<!-- com.xcc.mybatis.CardMapper.selectCardById -->
+    </resultMap>
+    
+    
+  
+    
+    
+    
+    
+    
+    
+</mapper>
