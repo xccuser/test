@@ -8,18 +8,20 @@
     <properties resource="db.properties"/>
     
 	<!-- 设置别名 -->
-    <settings>
+  <!--    <settings>
         <setting name="logImpl" value="LOG4J"/>
-        <setting name="lazyLoadingEnabled" value="true"/>
-        <!--会带有延迟加载的对象立即加载，反之每种属性将会按需加载  -->
+       <setting name="lazyLoadingEnabled" value="true"/>
+        会带有延迟加载的对象立即加载，反之每种属性将会按需加载 
         <setting name="aggressiveLazyLoading" value="false"/>
-    </settings>
- 
+    </settings> -->
+ 	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
     
      <typeAliases>
 		<typeAlias  alias="user" type="com.xcc.mybatis.User"/>
 	</typeAliases>
-    
+  
     <!--配置，即连接的数据库  -->
     <environments default="mysql">
         <environment id="mysql">

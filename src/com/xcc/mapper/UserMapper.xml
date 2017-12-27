@@ -24,4 +24,13 @@
 	select * from tb_elec where id=#{id}
 </select>
     
+<select id="selectAllUser" resultType="com.xcc.mybatis.User">
+	select * from tb_user    
+</select>
+
+<delete id="deleteUserById" parameterType="int">
+    delete from tb_user where id=#{id}
+</delete>
+
+
 </mapper>
