@@ -28,9 +28,11 @@ public class OneToManyTest {
 		SqlSession session=sqlSessionFactory.openSession();
 		OneToManyTest t=new OneToManyTest();
 	//	t.testSelectClazzById(session);
-		t.testSelectStudentById(session);
+		/*t.testSelectStudentById(session);
+		
 		session.commit();
-		session.close();
+		session.close();*/
+		t.oneToManyTest();
 	}
 	
 	public void testSelectClazzById(SqlSession session){
@@ -50,4 +52,17 @@ public class OneToManyTest {
 		System.out.println(stu);
 		System.out.println(stu.getClazz());
 	}
+	
+//	注解test
+	public void oneToManyTest(){
+		SqlSession session=FKSqlSessionFactory.getSqlSession();
+		ClazzMapper1 cm=session.getMapper(ClazzMapper1.class);
+		Clazz clazz=cm.selectById(1);
+		System.out.println(clazz.getId()+" "+clazz.getCode()+" "+clazz.getName());
+		clazz.getStudents().forEach(student->System.out.println(student));
+		session.commit();
+		session.close();
+	}
+	
+	
 }
