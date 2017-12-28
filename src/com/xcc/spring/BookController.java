@@ -31,5 +31,4 @@ public class BookController {
     	response.getWriter().println(mapper.writeValueAsString(book));
     	logger.info(mapper.writeValueAsString(book) );
     }
-
 }

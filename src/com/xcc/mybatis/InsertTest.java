@@ -12,16 +12,16 @@ import org.apache.ibatis.session.SqlSession;
 public class InsertTest {
 
 	public static void main(String[] args){
-		/*// 获得Session实例
-				SqlSession session = FKSqlSessionFactory.getSqlSession();
-				// 创建User对象
-				User user = new User("jack", "男", 22);
-				// 插入数据
-				session.insert("com.xcc.mybatis.UserMapper.saveUser", user);
-				// 提交事务saveUser
-				session.commit();
-				// 关闭Session
-				session.close();*/
+		SqlSession session =FKSqlSessionFactory.getSqlSession();
+		UserMapper um=session.getMapper(UserMapper.class);
+		User1 user=new User1();
+		user.setName("test");
+		user.setSex("男");
+		user.setAge(18);
+		um.saveUser1(user);
+		System.out.println(user.getId());
+		session.commit();
+		session.close();
 	}
 	
 	

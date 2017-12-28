@@ -8,15 +8,14 @@
     <properties resource="db.properties"/>
     
 	<!-- 设置别名 -->
-  <!--    <settings>
+     <settings>
         <setting name="logImpl" value="LOG4J"/>
        <setting name="lazyLoadingEnabled" value="true"/>
-        会带有延迟加载的对象立即加载，反之每种属性将会按需加载 
+   <!--      会带有延迟加载的对象立即加载，反之每种属性将会按需加载  -->
         <setting name="aggressiveLazyLoading" value="false"/>
-    </settings> -->
- 	<settings>
-		<setting name="logImpl" value="LOG4J"/>
-	</settings>
+        <setting name="cacheEnabled" value="true"/>
+    </settings> 
+ 	
     
      <typeAliases>
 		<typeAlias  alias="user" type="com.xcc.mybatis.User"/>
@@ -45,6 +44,7 @@
         <mapper resource="com/xcc/mapper/OrderMapper.xml"/>
         <mapper resource="com/xcc/mapper/ArticleMapper.xml"/>
         <mapper resource="com/xcc/mapper/EmployeeMapper.xml"/>
+        
     </mappers>
     
 </configuration>
