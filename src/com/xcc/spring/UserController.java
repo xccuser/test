@@ -3,6 +3,8 @@ package com.xcc.spring;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.portlet.ModelAndView;
 
 @Controller
 @RequestMapping(value="/user")
@@ -19,7 +22,7 @@ public class UserController {
 		super();
 		userList=new ArrayList<User>();
 	}
-	
+
 	private static final Log logger=LogFactory.getLog(UserController.class);
 
 	@RequestMapping(value="/register",method=RequestMethod.GET)
@@ -27,7 +30,7 @@ public class UserController {
 		logger.info("register GET...");
 		return "registerForm";
 	}
-	
+
 	@RequestMapping(value="/register",method=RequestMethod.POST)
 	public String register(
 			@RequestParam("loginname") String loginname,
@@ -56,12 +59,18 @@ public class UserController {
 		}
 		return "loginForm";
 	}
-	
-	
-	
-	
-	
-	
-	
-	
+
+	@RequestMapping(value="/login")
+	public ModelAndView login(String loginname,String password,
+			ModelAndView mv,HttpSession session){
+		
+		
+		return null;	
+	}
+
+
+
+
+
+
 }
