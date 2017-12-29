@@ -12,6 +12,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import com.xcc.mapper.ClazzMapper;
+import com.xcc.mapper.ClazzMapper1;
 import com.xcc.mapper.StudentMapper;
 
 /**
@@ -21,11 +22,11 @@ import com.xcc.mapper.StudentMapper;
 public class OneToManyTest {
 
 	public static void main(String[] args) throws Exception{
-		InputStream inputStream=Resources
+		/*InputStream inputStream=Resources
 				.getResourceAsStream("mybatis-config.xml");
 		SqlSessionFactory sqlSessionFactory=new SqlSessionFactoryBuilder()
 				.build(inputStream);
-		SqlSession session=sqlSessionFactory.openSession();
+		SqlSession session=sqlSessionFactory.openSession();*/
 		OneToManyTest t=new OneToManyTest();
 	//	t.testSelectClazzById(session);
 		/*t.testSelectStudentById(session);
@@ -63,6 +64,5 @@ public class OneToManyTest {
 		session.commit();
 		session.close();
 	}
-	
-	
 }
+

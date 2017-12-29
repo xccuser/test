@@ -36,7 +36,6 @@
     
     <mappers>
         <mapper resource="com/xcc/mybatis/UserMapper.xml"/>
-        <mapper resource="com/xcc/mybatis/ClazzMapper1.xml"/>
         <mapper resource="com/xcc/mapper/CardMapper.xml"/>
       	<mapper resource="com/xcc/mapper/PersonMapper.xml"/>
         <mapper resource="com/xcc/mapper/StudentMapper.xml"/>
@@ -45,7 +44,8 @@
         <mapper resource="com/xcc/mapper/OrderMapper.xml"/>
         <mapper resource="com/xcc/mapper/ArticleMapper.xml"/>
         <mapper resource="com/xcc/mapper/EmployeeMapper.xml"/>
-         				 
+        <mapper class="com.xcc.mapper.ClazzMapper1"/> 
+  		<mapper class="com.xcc.mapper.StudentMapper1"/> 
     </mappers>
     
 </configuration>

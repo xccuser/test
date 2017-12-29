@@ -44,6 +44,8 @@
         <mapper resource="com/xcc/mapper/OrderMapper.xml"/>
         <mapper resource="com/xcc/mapper/ArticleMapper.xml"/>
         <mapper resource="com/xcc/mapper/EmployeeMapper.xml"/>
+        <mapper class="com.xcc.mapper.ClazzMapper1"/> 
+  		<mapper class="com.xcc.mapper.StudentMapper1"/> 
     </mappers>
     
 </configuration>
